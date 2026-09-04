@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0",
+  "root": "<root>",
+  "generatedBy": "ts",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "ecosystems": [
+    {
+      "id": "rust",
+      "name": "Rust",
+      "signals": [
+        {
+          "path": ".cargo/config.toml",
+          "kind": "config",
+          "weight": 0.5
+        },
+        {
+          "path": "Cargo.lock",
+          "kind": "lockfile",
+          "weight": 0.4
+        },
+        {
+          "path": "Cargo.toml",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "rust-toolchain.toml",
+          "kind": "config",
+          "weight": 0.5
+        }
+      ],
+      "rawScore": 2.15,
+      "confidence": 0.9832,
+      "confidenceBucket": "certain",
+      "role": "primary"
+    }
+  ],
+  "packageManagers": [
+    "cargo"
+  ],
+  "buildTools": [
+    "cargo"
+  ],
+  "topology": {
+    "type": "single",
+    "tool": null,
+    "signals": []
+  },
+  "frameworks": [
+    {
+      "ecosystem": "rust",
+      "name": "Serde",
+      "evidence": [
+        "serde"
+      ]
+    },
+    {
+      "ecosystem": "rust",
+      "name": "Tokio",
+      "evidence": [
+        "tokio"
+      ]
+    }
+  ],
+  "testing": [],
+  "infrastructure": {
+    "ci": [],
+    "containers": [],
+    "orchestration": []
+  },
+  "dominantEcosystem": "rust"
+}

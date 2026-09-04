@@ -1,0 +1,35 @@
+{
+  "name": "@repo-fingerprint/core",
+  "version": "1.0.0",
+  "description": "Polyglot repository fingerprint — TypeScript detector with Diagnostic Confidence.",
+  "type": "module",
+  "bin": {
+    "repo-fingerprint": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@iarna/toml": "2.2.5",
+    "fast-xml-parser": "4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.7.4",
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1",
+    "tsx": "4.19.1",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

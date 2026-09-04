@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0",
+  "root": "<root>",
+  "generatedBy": "ts",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "ecosystems": [
+    {
+      "id": "python",
+      "name": "Python",
+      "signals": [
+        {
+          "path": "poetry.lock",
+          "kind": "lockfile",
+          "weight": 0.4
+        },
+        {
+          "path": "pyproject.toml",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "tox.ini",
+          "kind": "config",
+          "weight": 0.5
+        }
+      ],
+      "rawScore": 1.9,
+      "confidence": 0.9729,
+      "confidenceBucket": "certain",
+      "role": "primary"
+    }
+  ],
+  "packageManagers": [
+    "poetry"
+  ],
+  "buildTools": [],
+  "topology": {
+    "type": "single",
+    "tool": null,
+    "signals": []
+  },
+  "frameworks": [
+    {
+      "ecosystem": "python",
+      "name": "Django",
+      "evidence": [
+        "django"
+      ]
+    },
+    {
+      "ecosystem": "python",
+      "name": "NumPy",
+      "evidence": [
+        "numpy"
+      ]
+    }
+  ],
+  "testing": [
+    {
+      "ecosystem": "python",
+      "framework": "pytest"
+    }
+  ],
+  "infrastructure": {
+    "ci": [],
+    "containers": [],
+    "orchestration": []
+  },
+  "dominantEcosystem": "python"
+}

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0",
+  "root": "<root>",
+  "generatedBy": "ts",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "ecosystems": [
+    {
+      "id": "go",
+      "name": "Go",
+      "signals": [
+        {
+          "path": ".golangci.yml",
+          "kind": "config",
+          "weight": 0.5
+        },
+        {
+          "path": "cmd",
+          "kind": "source-layout",
+          "weight": 0.2
+        },
+        {
+          "path": "go.mod",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "go.sum",
+          "kind": "lockfile",
+          "weight": 0.4
+        },
+        {
+          "path": "internal",
+          "kind": "source-layout",
+          "weight": 0.2
+        }
+      ],
+      "rawScore": 2.3,
+      "confidence": 0.9873,
+      "confidenceBucket": "certain",
+      "role": "primary"
+    }
+  ],
+  "packageManagers": [
+    "go-modules"
+  ],
+  "buildTools": [
+    "go"
+  ],
+  "topology": {
+    "type": "single",
+    "tool": null,
+    "signals": []
+  },
+  "frameworks": [
+    {
+      "ecosystem": "go",
+      "name": "Kubernetes client",
+      "evidence": [
+        "k8s.io/client-go"
+      ]
+    },
+    {
+      "ecosystem": "go",
+      "name": "gRPC",
+      "evidence": [
+        "google.golang.org/grpc"
+      ]
+    }
+  ],
+  "testing": [],
+  "infrastructure": {
+    "ci": [],
+    "containers": [],
+    "orchestration": []
+  },
+  "dominantEcosystem": "go"
+}

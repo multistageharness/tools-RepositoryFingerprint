@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "root": "<root>",
+  "generatedBy": "bash",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "ecosystems": [
+    {
+      "id": "node",
+      "name": "Node.js",
+      "signals": [
+        {
+          "path": "repo-a/package.json",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "repo-b/package.json",
+          "kind": "primary-manifest",
+          "weight": 1
+        }
+      ],
+      "rawScore": null,
+      "confidence": null,
+      "confidenceBucket": null,
+      "role": "primary"
+    }
+  ],
+  "packageManagers": [],
+  "buildTools": [],
+  "topology": {
+    "type": "single",
+    "tool": null,
+    "signals": []
+  },
+  "frameworks": [],
+  "testing": [],
+  "infrastructure": {
+    "ci": [],
+    "containers": [],
+    "orchestration": []
+  },
+  "dominantEcosystem": "node"
+}

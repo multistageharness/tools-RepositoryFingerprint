@@ -1,0 +1,26 @@
+{
+  "description": "Per-implementation fields excluded from cross-impl parity comparison. Bash and powershell are presence-only scanners: they cannot compute Diagnostic Confidence and do not parse manifests, so their confidence numbers, frameworks and testing are not compared. TypeScript and Python must match on everything (empty ignore lists).",
+  "reference": "ts",
+  "tolerances": {
+    "bash": {
+      "ignore": [
+        "ecosystems[].rawScore",
+        "ecosystems[].confidence",
+        "ecosystems[].confidenceBucket",
+        "frameworks",
+        "testing"
+      ]
+    },
+    "powershell": {
+      "ignore": [
+        "ecosystems[].rawScore",
+        "ecosystems[].confidence",
+        "ecosystems[].confidenceBucket",
+        "frameworks",
+        "testing"
+      ]
+    },
+    "ts": { "ignore": [] },
+    "py": { "ignore": [] }
+  }
+}

@@ -1,0 +1,4 @@
+# poetry lock stub
+[[package]]
+name = "django"
+version = "5.0"

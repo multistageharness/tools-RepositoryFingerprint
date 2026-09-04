@@ -1,0 +1,237 @@
+{
+  "matrixVersion": "1.0",
+  "description": "Single source of truth for repository detection signals. All three implementations (bash, ts, py) read this file. Signal weights default per kind (see confidence-model.md) but are stored explicitly per row so the data is self-contained.",
+  "ecosystems": [
+    {
+      "id": "java-maven",
+      "name": "Java (Maven)",
+      "signals": [
+        { "glob": "pom.xml", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "mvnw", "kind": "build-wrapper", "weight": 0.3 },
+        { "glob": "src/main/java", "kind": "source-layout", "weight": 0.2 },
+        { "glob": "mvnw.cmd", "kind": "build-wrapper", "weight": 0.3 },
+        { "glob": "src/test/java", "kind": "source-layout", "weight": 0.2 }
+      ]
+    },
+    {
+      "id": "java-gradle",
+      "name": "Java (Gradle)",
+      "signals": [
+        { "glob": "build.gradle", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "settings.gradle", "kind": "config", "weight": 0.5 },
+        { "glob": "gradlew", "kind": "build-wrapper", "weight": 0.3 },
+        { "glob": "gradlew.bat", "kind": "build-wrapper", "weight": 0.3 },
+        { "glob": "gradle.properties", "kind": "config", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "kotlin",
+      "name": "Kotlin",
+      "signals": [
+        { "glob": "build.gradle.kts", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "settings.gradle.kts", "kind": "config", "weight": 0.5 },
+        { "glob": "src/main/kotlin", "kind": "source-layout", "weight": 0.2 },
+        { "glob": "src/test/kotlin", "kind": "source-layout", "weight": 0.2 }
+      ]
+    },
+    {
+      "id": "node",
+      "name": "Node.js",
+      "signals": [
+        { "glob": "package.json", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "package-lock.json", "kind": "lockfile", "weight": 0.4 },
+        { "glob": "yarn.lock", "kind": "lockfile", "weight": 0.4 },
+        { "glob": "pnpm-lock.yaml", "kind": "lockfile", "weight": 0.4 },
+        { "glob": ".npmrc", "kind": "config", "weight": 0.5 },
+        { "glob": ".nvmrc", "kind": "config", "weight": 0.5 },
+        { "glob": "bun.lockb", "kind": "lockfile", "weight": 0.4 }
+      ]
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "signals": [
+        { "glob": "tsconfig.json", "kind": "config", "weight": 0.5 },
+        { "glob": "tsconfig.base.json", "kind": "config", "weight": 0.5 },
+        { "glob": "tsconfig.build.json", "kind": "config", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "signals": [
+        { "glob": "pyproject.toml", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "setup.py", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "requirements.txt", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "setup.cfg", "kind": "config", "weight": 0.5 },
+        { "glob": "poetry.lock", "kind": "lockfile", "weight": 0.4 },
+        { "glob": "Pipfile.lock", "kind": "lockfile", "weight": 0.4 },
+        { "glob": "Pipfile", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "tox.ini", "kind": "config", "weight": 0.5 },
+        { "glob": "uv.lock", "kind": "lockfile", "weight": 0.4 }
+      ]
+    },
+    {
+      "id": "go",
+      "name": "Go",
+      "signals": [
+        { "glob": "go.mod", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "go.sum", "kind": "lockfile", "weight": 0.4 },
+        { "glob": "cmd", "kind": "source-layout", "weight": 0.2 },
+        { "glob": "internal", "kind": "source-layout", "weight": 0.2 },
+        { "glob": ".golangci.yml", "kind": "config", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "signals": [
+        { "glob": "Cargo.toml", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "Cargo.lock", "kind": "lockfile", "weight": 0.4 },
+        { "glob": "rust-toolchain.toml", "kind": "config", "weight": 0.5 },
+        { "glob": ".cargo/config.toml", "kind": "config", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "dotnet",
+      "name": ".NET",
+      "signals": [
+        { "glob": "*.csproj", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "*.fsproj", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "*.sln", "kind": "config", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "php",
+      "name": "PHP",
+      "signals": [
+        { "glob": "composer.json", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "composer.lock", "kind": "lockfile", "weight": 0.4 }
+      ]
+    },
+    {
+      "id": "ruby",
+      "name": "Ruby",
+      "signals": [
+        { "glob": "Gemfile", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "Gemfile.lock", "kind": "lockfile", "weight": 0.4 },
+        { "glob": "*.gemspec", "kind": "config", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "swift",
+      "name": "Swift",
+      "signals": [
+        { "glob": "Package.swift", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "Package.resolved", "kind": "lockfile", "weight": 0.4 }
+      ]
+    },
+    {
+      "id": "dart",
+      "name": "Dart",
+      "signals": [
+        { "glob": "pubspec.yaml", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "pubspec.lock", "kind": "lockfile", "weight": 0.4 }
+      ]
+    },
+    {
+      "id": "elixir",
+      "name": "Elixir",
+      "signals": [
+        { "glob": "mix.exs", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "mix.lock", "kind": "lockfile", "weight": 0.4 }
+      ]
+    },
+    {
+      "id": "c-cpp",
+      "name": "C/C++",
+      "signals": [
+        { "glob": "CMakeLists.txt", "kind": "primary-manifest", "weight": 1.0 },
+        { "glob": "configure.ac", "kind": "config", "weight": 0.5 },
+        { "glob": "Makefile", "kind": "build-wrapper", "weight": 0.3 }
+      ]
+    }
+  ],
+  "packageManagers": [
+    { "ecosystem": "node", "tool": "npm", "glob": "package-lock.json" },
+    { "ecosystem": "node", "tool": "yarn", "glob": "yarn.lock" },
+    { "ecosystem": "node", "tool": "pnpm", "glob": "pnpm-lock.yaml" },
+    { "ecosystem": "node", "tool": "bun", "glob": "bun.lockb" },
+    { "ecosystem": "python", "tool": "poetry", "glob": "poetry.lock" },
+    { "ecosystem": "python", "tool": "pipenv", "glob": "Pipfile.lock" },
+    { "ecosystem": "python", "tool": "pip", "glob": "requirements.txt" },
+    { "ecosystem": "python", "tool": "uv", "glob": "uv.lock" },
+    { "ecosystem": "java-maven", "tool": "maven", "glob": "pom.xml" },
+    { "ecosystem": "java-gradle", "tool": "gradle", "glob": "build.gradle" },
+    { "ecosystem": "kotlin", "tool": "gradle", "glob": "build.gradle.kts" },
+    { "ecosystem": "go", "tool": "go-modules", "glob": "go.mod" },
+    { "ecosystem": "rust", "tool": "cargo", "glob": "Cargo.toml" },
+    { "ecosystem": "php", "tool": "composer", "glob": "composer.json" },
+    { "ecosystem": "ruby", "tool": "bundler", "glob": "Gemfile" },
+    { "ecosystem": "dart", "tool": "pub", "glob": "pubspec.yaml" },
+    { "ecosystem": "elixir", "tool": "mix", "glob": "mix.exs" }
+  ],
+  "buildTools": [
+    { "tool": "maven", "glob": "mvnw" },
+    { "tool": "maven", "glob": "pom.xml" },
+    { "tool": "gradle", "glob": "gradlew" },
+    { "tool": "gradle", "glob": "build.gradle" },
+    { "tool": "gradle", "glob": "build.gradle.kts" },
+    { "tool": "cmake", "glob": "CMakeLists.txt" },
+    { "tool": "make", "glob": "Makefile" },
+    { "tool": "cargo", "glob": "Cargo.toml" },
+    { "tool": "go", "glob": "go.mod" },
+    { "tool": "tsc", "glob": "tsconfig.json" }
+  ],
+  "frameworks": [
+    { "ecosystem": "node", "name": "React", "deps": ["react"] },
+    { "ecosystem": "node", "name": "Express", "deps": ["express"] },
+    { "ecosystem": "node", "name": "Next.js", "deps": ["next"] },
+    { "ecosystem": "node", "name": "Vue", "deps": ["vue"] },
+    { "ecosystem": "typescript", "name": "TypeScript", "deps": ["typescript"] },
+    { "ecosystem": "python", "name": "Django", "deps": ["django"] },
+    { "ecosystem": "python", "name": "Flask", "deps": ["flask"] },
+    { "ecosystem": "python", "name": "FastAPI", "deps": ["fastapi"] },
+    { "ecosystem": "python", "name": "NumPy", "deps": ["numpy"] },
+    { "ecosystem": "python", "name": "pandas", "deps": ["pandas"] },
+    { "ecosystem": "python", "name": "aiohttp", "deps": ["aiohttp"] },
+    { "ecosystem": "java-maven", "name": "Spring", "deps": ["org.springframework:spring-core", "org.springframework.boot:spring-boot-starter", "spring-boot-starter"] },
+    { "ecosystem": "java-maven", "name": "Jackson", "deps": ["com.fasterxml.jackson.core:jackson-databind"] },
+    { "ecosystem": "java-maven", "name": "Log4j", "deps": ["org.apache.logging.log4j:log4j-core"] },
+    { "ecosystem": "go", "name": "gRPC", "deps": ["google.golang.org/grpc"] },
+    { "ecosystem": "go", "name": "Kubernetes client", "deps": ["k8s.io/client-go"] },
+    { "ecosystem": "rust", "name": "Tokio", "deps": ["tokio"] },
+    { "ecosystem": "rust", "name": "Serde", "deps": ["serde"] }
+  ],
+  "testing": [
+    { "ecosystem": "node", "framework": "Jest", "deps": ["jest"] },
+    { "ecosystem": "node", "framework": "Vitest", "deps": ["vitest"] },
+    { "ecosystem": "node", "framework": "Mocha", "deps": ["mocha"] },
+    { "ecosystem": "python", "framework": "pytest", "deps": ["pytest"] },
+    { "ecosystem": "java-maven", "framework": "JUnit", "deps": ["junit", "org.junit.jupiter:junit-jupiter"] },
+    { "ecosystem": "rust", "framework": "Tokio Test", "deps": ["tokio-test"] }
+  ],
+  "topology": [
+    { "tool": "pnpm", "glob": "pnpm-workspace.yaml", "type": "monorepo", "kind": "workspace-marker" },
+    { "tool": "turborepo", "glob": "turbo.json", "type": "monorepo", "kind": "workspace-marker" },
+    { "tool": "nx", "glob": "nx.json", "type": "monorepo", "kind": "workspace-marker" },
+    { "tool": "lerna", "glob": "lerna.json", "type": "monorepo", "kind": "workspace-marker" },
+    { "tool": "go-workspace", "glob": "go.work", "type": "workspace", "kind": "workspace-marker" },
+    { "tool": "cargo-workspace", "marker": { "file": "Cargo.toml", "contains": "[workspace]" }, "type": "workspace", "kind": "workspace-marker" },
+    { "tool": "npm-workspaces", "marker": { "file": "package.json", "jsonKey": "workspaces" }, "type": "monorepo", "kind": "workspace-marker" }
+  ],
+  "infrastructure": [
+    { "tool": "github-actions", "glob": ".github/workflows", "category": "ci", "kind": "infra-marker" },
+    { "tool": "jenkins", "glob": "Jenkinsfile", "category": "ci", "kind": "infra-marker" },
+    { "tool": "gitlab-ci", "glob": ".gitlab-ci.yml", "category": "ci", "kind": "infra-marker" },
+    { "tool": "azure-pipelines", "glob": "azure-pipelines.yml", "category": "ci", "kind": "infra-marker" },
+    { "tool": "circleci", "glob": ".circleci/config.yml", "category": "ci", "kind": "infra-marker" },
+    { "tool": "travis", "glob": ".travis.yml", "category": "ci", "kind": "infra-marker" },
+    { "tool": "docker", "glob": "Dockerfile", "category": "containers", "kind": "infra-marker" },
+    { "tool": "docker-compose", "glob": "docker-compose.yml", "category": "containers", "kind": "infra-marker" },
+    { "tool": "docker-compose", "glob": "compose.yaml", "category": "containers", "kind": "infra-marker" },
+    { "tool": "helm", "glob": "Chart.yaml", "category": "orchestration", "kind": "infra-marker" },
+    { "tool": "kustomize", "glob": "kustomization.yaml", "category": "orchestration", "kind": "infra-marker" },
+    { "tool": "terraform", "glob": "*.tf", "category": "orchestration", "kind": "infra-marker" }
+  ]
+}

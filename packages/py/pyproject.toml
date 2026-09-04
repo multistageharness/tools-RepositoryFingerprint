@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repo-fingerprint"
+version = "1.0.0"
+description = "Polyglot repository fingerprint — Python detector with Diagnostic Confidence."
+readme = "README.md"
+requires-python = ">=3.11"
+# Zero runtime dependencies: TOML via stdlib tomllib (3.11+), XML via xml.etree, everything else stdlib.
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8", "jsonschema>=4.20"]
+
+[project.scripts]
+repo-fingerprint = "repo_fingerprint.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

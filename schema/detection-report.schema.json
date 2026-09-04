@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multistageharness/repo-fingerprint/detection-report.schema.json",
+  "title": "Detection Report",
+  "description": "Shared output contract for the polyglot repository-fingerprint tool. The bash and powershell impls leave confidence-related fields null; the TypeScript and Python impls populate them.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "root",
+    "generatedBy",
+    "generatedAt",
+    "ecosystems",
+    "packageManagers",
+    "buildTools",
+    "topology",
+    "frameworks",
+    "testing",
+    "infrastructure",
+    "dominantEcosystem"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "root": { "type": "string" },
+    "generatedBy": { "enum": ["bash", "powershell", "ts", "py"] },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "ecosystems": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ecosystem" }
+    },
+    "packageManagers": { "type": "array", "items": { "type": "string" } },
+    "buildTools": { "type": "array", "items": { "type": "string" } },
+    "topology": { "$ref": "#/$defs/topology" },
+    "frameworks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/framework" }
+    },
+    "testing": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/testingTool" }
+    },
+    "infrastructure": { "$ref": "#/$defs/infrastructure" },
+    "dominantEcosystem": { "type": ["string", "null"] },
+    "subRepos": {
+      "description": "Deep-scan (--deep / --shadow-scan) runs only: top-most nested directories that hold their own primary manifest. Absent on default runs.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/subRepo" }
+    }
+  },
+  "$defs": {
+    "signalKind": {
+      "enum": [
+        "primary-manifest",
+        "lockfile",
+        "build-wrapper",
+        "config",
+        "source-layout",
+        "workspace-marker",
+        "infra-marker"
+      ]
+    },
+    "confidenceBucket": {
+      "type": ["string", "null"],
+      "enum": ["none", "low", "medium", "high", "certain", null]
+    },
+    "signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "kind", "weight"],
+      "properties": {
+        "path": { "type": "string" },
+        "kind": { "$ref": "#/$defs/signalKind" },
+        "weight": { "type": "number" }
+      }
+    },
+    "ecosystem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "signals", "rawScore", "confidence", "confidenceBucket", "role"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "signals": { "type": "array", "items": { "$ref": "#/$defs/signal" } },
+        "rawScore": { "type": ["number", "null"] },
+        "confidence": { "type": ["number", "null"] },
+        "confidenceBucket": { "$ref": "#/$defs/confidenceBucket" },
+        "role": { "enum": ["primary", "auxiliary"] }
+      }
+    },
+    "topology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "tool", "signals"],
+      "properties": {
+        "type": { "enum": ["single", "monorepo", "workspace"] },
+        "tool": { "type": ["string", "null"] },
+        "signals": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "framework": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ecosystem", "name", "evidence"],
+      "properties": {
+        "ecosystem": { "type": "string" },
+        "name": { "type": "string" },
+        "evidence": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "testingTool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ecosystem", "framework"],
+      "properties": {
+        "ecosystem": { "type": "string" },
+        "framework": { "type": "string" }
+      }
+    },
+    "infrastructure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ci", "containers", "orchestration"],
+      "properties": {
+        "ci": { "type": "array", "items": { "type": "string" } },
+        "containers": { "type": "array", "items": { "type": "string" } },
+        "orchestration": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "subRepo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "primaryManifests", "dominantEcosystem"],
+      "properties": {
+        "path": { "type": "string" },
+        "primaryManifests": { "type": "array", "items": { "type": "string" } },
+        "dominantEcosystem": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

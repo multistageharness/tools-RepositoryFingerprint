@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0",
+  "root": "/example/broken",
+  "generatedBy": "ruby",
+  "generatedAt": "2026-07-02T00:00:00Z",
+  "ecosystems": [
+    {
+      "id": "node",
+      "name": "Node.js",
+      "signals": [
+        { "path": "package.json", "kind": "not-a-real-kind", "weight": 1.0 }
+      ],
+      "rawScore": 1.0,
+      "confidence": 0.6321,
+      "confidenceBucket": "medium",
+      "role": "primary"
+    }
+  ],
+  "packageManagers": ["npm"],
+  "buildTools": [],
+  "topology": { "type": "single", "tool": null, "signals": [] },
+  "frameworks": [],
+  "infrastructure": { "ci": [], "containers": [], "orchestration": [] },
+  "dominantEcosystem": "node"
+}

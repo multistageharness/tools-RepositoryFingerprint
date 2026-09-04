@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "1.0",
+  "root": "<root>",
+  "generatedBy": "bash",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "ecosystems": [
+    {
+      "id": "go",
+      "name": "Go",
+      "signals": [
+        {
+          "path": "go-mod/cmd",
+          "kind": "source-layout",
+          "weight": 0.2
+        },
+        {
+          "path": "go-mod/go.mod",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "go-mod/go.sum",
+          "kind": "lockfile",
+          "weight": 0.4
+        }
+      ],
+      "rawScore": null,
+      "confidence": null,
+      "confidenceBucket": null,
+      "role": "primary"
+    },
+    {
+      "id": "java-maven",
+      "name": "Java (Maven)",
+      "signals": [
+        {
+          "path": "java-maven/mvnw",
+          "kind": "build-wrapper",
+          "weight": 0.3
+        },
+        {
+          "path": "java-maven/pom.xml",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "java-maven/src/main/java",
+          "kind": "source-layout",
+          "weight": 0.2
+        }
+      ],
+      "rawScore": null,
+      "confidence": null,
+      "confidenceBucket": null,
+      "role": "auxiliary"
+    },
+    {
+      "id": "node",
+      "name": "Node.js",
+      "signals": [
+        {
+          "path": "node-ts/package-lock.json",
+          "kind": "lockfile",
+          "weight": 0.4
+        },
+        {
+          "path": "node-ts/package.json",
+          "kind": "primary-manifest",
+          "weight": 1
+        }
+      ],
+      "rawScore": null,
+      "confidence": null,
+      "confidenceBucket": null,
+      "role": "auxiliary"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "signals": [
+        {
+          "path": "python-poetry/poetry.lock",
+          "kind": "lockfile",
+          "weight": 0.4
+        },
+        {
+          "path": "python-poetry/pyproject.toml",
+          "kind": "primary-manifest",
+          "weight": 1
+        }
+      ],
+      "rawScore": null,
+      "confidence": null,
+      "confidenceBucket": null,
+      "role": "auxiliary"
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "signals": [
+        {
+          "path": "rust-cargo/Cargo.lock",
+          "kind": "lockfile",
+          "weight": 0.4
+        },
+        {
+          "path": "rust-cargo/Cargo.toml",
+          "kind": "primary-manifest",
+          "weight": 1
+        }
+      ],
+      "rawScore": null,
+      "confidence": null,
+      "confidenceBucket": null,
+      "role": "auxiliary"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "signals": [
+        {
+          "path": "node-ts/tsconfig.json",
+          "kind": "config",
+          "weight": 0.5
+        }
+      ],
+      "rawScore": null,
+      "confidence": null,
+      "confidenceBucket": null,
+      "role": "auxiliary"
+    }
+  ],
+  "packageManagers": [
+    "cargo",
+    "go-modules",
+    "maven",
+    "npm",
+    "poetry"
+  ],
+  "buildTools": [
+    "cargo",
+    "go",
+    "maven",
+    "tsc"
+  ],
+  "topology": {
+    "type": "single",
+    "tool": null,
+    "signals": []
+  },
+  "frameworks": [],
+  "testing": [],
+  "infrastructure": {
+    "ci": [],
+    "containers": [],
+    "orchestration": []
+  },
+  "dominantEcosystem": "go"
+}

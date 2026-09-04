@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0",
+  "root": "<root>",
+  "generatedBy": "powershell",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "ecosystems": [
+    {
+      "id": "go",
+      "name": "Go",
+      "signals": [
+        {
+          "path": "go.mod",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "go.sum",
+          "kind": "lockfile",
+          "weight": 0.4
+        }
+      ],
+      "rawScore": null,
+      "confidence": null,
+      "confidenceBucket": null,
+      "role": "primary"
+    }
+  ],
+  "packageManagers": [
+    "go-modules"
+  ],
+  "buildTools": [
+    "go"
+  ],
+  "topology": {
+    "type": "single",
+    "tool": null,
+    "signals": []
+  },
+  "frameworks": [],
+  "testing": [],
+  "infrastructure": {
+    "ci": [],
+    "containers": [],
+    "orchestration": []
+  },
+  "dominantEcosystem": "go"
+}

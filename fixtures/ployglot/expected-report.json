@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "1.0",
+  "root": "<root>",
+  "generatedBy": "ts",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "ecosystems": [
+    {
+      "id": "go",
+      "name": "Go",
+      "signals": [
+        {
+          "path": "go-mod/cmd",
+          "kind": "source-layout",
+          "weight": 0.2
+        },
+        {
+          "path": "go-mod/go.mod",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "go-mod/go.sum",
+          "kind": "lockfile",
+          "weight": 0.4
+        }
+      ],
+      "rawScore": 0.8,
+      "confidence": 0.7813,
+      "confidenceBucket": "high",
+      "role": "primary"
+    },
+    {
+      "id": "java-maven",
+      "name": "Java (Maven)",
+      "signals": [
+        {
+          "path": "java-maven/mvnw",
+          "kind": "build-wrapper",
+          "weight": 0.3
+        },
+        {
+          "path": "java-maven/pom.xml",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "java-maven/src/main/java",
+          "kind": "source-layout",
+          "weight": 0.2
+        }
+      ],
+      "rawScore": 0.75,
+      "confidence": 0.7595,
+      "confidenceBucket": "high",
+      "role": "auxiliary"
+    },
+    {
+      "id": "node",
+      "name": "Node.js",
+      "signals": [
+        {
+          "path": "node-ts/package-lock.json",
+          "kind": "lockfile",
+          "weight": 0.4
+        },
+        {
+          "path": "node-ts/package.json",
+          "kind": "primary-manifest",
+          "weight": 1
+        }
+      ],
+      "rawScore": 0.7,
+      "confidence": 0.7355,
+      "confidenceBucket": "high",
+      "role": "auxiliary"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "signals": [
+        {
+          "path": "python-poetry/poetry.lock",
+          "kind": "lockfile",
+          "weight": 0.4
+        },
+        {
+          "path": "python-poetry/pyproject.toml",
+          "kind": "primary-manifest",
+          "weight": 1
+        }
+      ],
+      "rawScore": 0.7,
+      "confidence": 0.7355,
+      "confidenceBucket": "high",
+      "role": "auxiliary"
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "signals": [
+        {
+          "path": "rust-cargo/Cargo.lock",
+          "kind": "lockfile",
+          "weight": 0.4
+        },
+        {
+          "path": "rust-cargo/Cargo.toml",
+          "kind": "primary-manifest",
+          "weight": 1
+        }
+      ],
+      "rawScore": 0.7,
+      "confidence": 0.7355,
+      "confidenceBucket": "high",
+      "role": "auxiliary"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "signals": [
+        {
+          "path": "node-ts/tsconfig.json",
+          "kind": "config",
+          "weight": 0.5
+        }
+      ],
+      "rawScore": 0.25,
+      "confidence": 0.3781,
+      "confidenceBucket": "low",
+      "role": "auxiliary"
+    }
+  ],
+  "packageManagers": [
+    "cargo",
+    "go-modules",
+    "maven",
+    "npm",
+    "poetry"
+  ],
+  "buildTools": [
+    "cargo",
+    "go",
+    "maven",
+    "tsc"
+  ],
+  "topology": {
+    "type": "single",
+    "tool": null,
+    "signals": []
+  },
+  "frameworks": [
+    {
+      "ecosystem": "go",
+      "name": "Kubernetes client",
+      "evidence": [
+        "k8s.io/client-go"
+      ]
+    },
+    {
+      "ecosystem": "go",
+      "name": "gRPC",
+      "evidence": [
+        "google.golang.org/grpc"
+      ]
+    },
+    {
+      "ecosystem": "java-maven",
+      "name": "Jackson",
+      "evidence": [
+        "com.fasterxml.jackson.core:jackson-databind"
+      ]
+    },
+    {
+      "ecosystem": "java-maven",
+      "name": "Spring",
+      "evidence": [
+        "org.springframework.boot:spring-boot-starter",
+        "spring-boot-starter"
+      ]
+    },
+    {
+      "ecosystem": "node",
+      "name": "Express",
+      "evidence": [
+        "express"
+      ]
+    },
+    {
+      "ecosystem": "node",
+      "name": "React",
+      "evidence": [
+        "react"
+      ]
+    },
+    {
+      "ecosystem": "python",
+      "name": "Django",
+      "evidence": [
+        "django"
+      ]
+    },
+    {
+      "ecosystem": "python",
+      "name": "NumPy",
+      "evidence": [
+        "numpy"
+      ]
+    },
+    {
+      "ecosystem": "rust",
+      "name": "Serde",
+      "evidence": [
+        "serde"
+      ]
+    },
+    {
+      "ecosystem": "rust",
+      "name": "Tokio",
+      "evidence": [
+        "tokio"
+      ]
+    },
+    {
+      "ecosystem": "typescript",
+      "name": "TypeScript",
+      "evidence": [
+        "typescript"
+      ]
+    }
+  ],
+  "testing": [
+    {
+      "ecosystem": "java-maven",
+      "framework": "JUnit"
+    },
+    {
+      "ecosystem": "node",
+      "framework": "Jest"
+    },
+    {
+      "ecosystem": "python",
+      "framework": "pytest"
+    }
+  ],
+  "infrastructure": {
+    "ci": [],
+    "containers": [],
+    "orchestration": []
+  },
+  "dominantEcosystem": "go"
+}

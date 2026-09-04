@@ -1,0 +1,7 @@
+[submodule ".ai"]
+	path = .ai
+	url = git@github.com:multistageharness-com/agent-session-storage.ai.git
+[submodule ".archives"]
+	path = .archives
+	url = git@github.com:multistageharness-com/git-submodule-folder.archives.git
+	branch = main

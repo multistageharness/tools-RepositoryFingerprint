@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "root": "<root>",
+  "generatedBy": "powershell",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "ecosystems": [
+    {
+      "id": "java-maven",
+      "name": "Java (Maven)",
+      "signals": [
+        {
+          "path": "mvnw",
+          "kind": "build-wrapper",
+          "weight": 0.3
+        },
+        {
+          "path": "pom.xml",
+          "kind": "primary-manifest",
+          "weight": 1
+        },
+        {
+          "path": "src/main/java",
+          "kind": "source-layout",
+          "weight": 0.2
+        }
+      ],
+      "rawScore": null,
+      "confidence": null,
+      "confidenceBucket": null,
+      "role": "primary"
+    }
+  ],
+  "packageManagers": [
+    "maven"
+  ],
+  "buildTools": [
+    "maven"
+  ],
+  "topology": {
+    "type": "single",
+    "tool": null,
+    "signals": []
+  },
+  "frameworks": [],
+  "testing": [],
+  "infrastructure": {
+    "ci": [],
+    "containers": [],
+    "orchestration": []
+  },
+  "dominantEcosystem": "java-maven"
+}
