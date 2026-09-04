@@ -31,7 +31,7 @@ integration: ## CLI integration suite; writes reports (junit xml, tap, spec log,
 	@mkdir -p $(LOGS)
 	@stamp=$$(date +%Y%m%d-%H%M%S); \
 	INTEGRATION_SUMMARY_FILE=$(CURDIR)/$(LOGS)/integration-$$stamp.fixtures.jsonl \
-	$(NODE) --import tsx --test \
+	$(NODE) --require tsx/cjs --require ./test/support/raise-max-listeners.ts --import tsx --test \
 	  --test-reporter=spec  --test-reporter-destination=stdout \
 	  --test-reporter=spec  --test-reporter-destination=$(LOGS)/integration-$$stamp.log \
 	  --test-reporter=junit --test-reporter-destination=$(LOGS)/integration-$$stamp.junit.xml \
